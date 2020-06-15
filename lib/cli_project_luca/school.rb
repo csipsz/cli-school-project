@@ -1,0 +1,2 @@
+class Shool 
+end 
