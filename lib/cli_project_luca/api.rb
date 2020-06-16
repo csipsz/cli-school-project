@@ -1,44 +1,41 @@
 require 'pry'
 class API 
-    BASE_URL = "https://the-one-api.herokuapp.com/v1/"
-    KEY = "5DDdK9dPmf_GvAAdcHcx"
 
     GHIBLI = "https://ghibliapi.herokuapp.com/"
 
-    #def self.get_characters 
-        #response = RestClient.get(BASE_URL + "book")
-        #puts response
-    #end 
-=begin
     def self.get_characters 
         response = RestClient.get(GHIBLI + "people")
-        data = JSON.parse(response)
-        data.each do |hash| 
-            hash.each do |key, value|
-            #binding.pry
-            if key == 'name'
-                puts value
-            end 
-            end 
-        end
+        char_data = JSON.parse(response)
+        char_data.map do |hash| 
+        Character.new(hash)
+        end 
     end 
-=end 
 
-def self.get_characters 
-    response = RestClient.get(GHIBLI + "people")
-    data = JSON.parse(response)
-    character_objects = []
-    data.each do |hash| 
-        character_objects << Character.new(hash)
-    end 
-    #binding.pry
-    character_objects
-end 
-
-    def self.get_locations 
+    def self.get_places 
         response = RestClient.get(GHIBLI + "locations")
-        data = JSON.parse(response)
-        puts data.first
+        place_data = JSON.parse(response)
+        place_data.map do |hash| 
+            Place.new(hash)
+         end 
+    end 
+
+    def self.get_films 
+        response = RestClient.get(GHIBLI + "films")
+        film_data = JSON.parse(response)
+        film_data.map do |hash| 
+            title = hash['title']
+            description = hash['description']
+            director = hash['director']
+            producer = hash['producer']
+            release_date = hash['release_date']
+            Film.new(
+                title: title, 
+                description: description, 
+                director: director, 
+                producer: producer, 
+                release_date: release_date
+            )
+        end 
     end 
 
 end 

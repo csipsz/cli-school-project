@@ -26,7 +26,7 @@ EOF
             if user_choice.to_i == 1
                 show_characters
             elsif user_choice.to_i == 2 
-                show_movies
+                show_places
             elsif user_choice == 'exit'
                 finishing_program
             else 
@@ -37,11 +37,27 @@ EOF
 
     def show_characters
         puts "Here are your characters"
-        Character.all
+        API.get_characters
+        Character.all.each do |character| 
+            
+            puts character.name 
+        end 
+       
     end 
 
-    def show_movies 
+    def show_places 
         puts "Here are your movies"
+        
+        puts API.get_places
+        Place.all.each do |place| 
+
+        puts place.name
+        end 
+
+        puts API.get_films
+        Film.all.each do |film| 
+            puts film.title 
+        end 
     end 
 
     def finishing_program 

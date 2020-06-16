@@ -10,9 +10,5 @@ require_relative './cli_project_luca/character'
 require_relative './cli_project_luca/place'
 require_relative './cli_project_luca/film'
 
-module CliProjectLuca
-  class Error < StandardError; end
-  # Your code goes here...
-end
 
 
