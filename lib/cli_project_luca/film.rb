@@ -1,15 +1,11 @@
 class Film 
-    attr_accessor :title, :description, :director, :producer, :release_date
+    attr_accessor :title, :description
 
     @@all = []
 
-    def initialize(title:, description:, director:, producer:, release_date:)
-        self.title = title, 
-        self.description = description, 
-        self.director = director, 
-        self.producer = producer, 
-        self.release_date = release_date
-
+    def initialize(title, description)
+        self.title = title
+        self.description = description
         @@all << self
     end
 
