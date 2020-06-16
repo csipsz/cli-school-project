@@ -7,7 +7,8 @@ require_relative './cli_project_luca/version'
 require_relative './cli_project_luca/cli'
 require_relative './cli_project_luca/api'
 require_relative './cli_project_luca/character'
-require_relative './cli_project_luca/things'
+require_relative './cli_project_luca/place'
+require_relative './cli_project_luca/film'
 
 module CliProjectLuca
   class Error < StandardError; end

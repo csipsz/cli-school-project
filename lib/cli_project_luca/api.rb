@@ -1,4 +1,4 @@
-
+require 'pry'
 class API 
     BASE_URL = "https://the-one-api.herokuapp.com/v1/"
     KEY = "5DDdK9dPmf_GvAAdcHcx"
@@ -9,7 +9,7 @@ class API
         #response = RestClient.get(BASE_URL + "book")
         #puts response
     #end 
-
+=begin
     def self.get_characters 
         response = RestClient.get(GHIBLI + "people")
         data = JSON.parse(response)
@@ -22,6 +22,18 @@ class API
             end 
         end
     end 
+=end 
+
+def self.get_characters 
+    response = RestClient.get(GHIBLI + "people")
+    data = JSON.parse(response)
+    character_objects = []
+    data.each do |hash| 
+        character_objects << Character.new(hash)
+    end 
+    #binding.pry
+    character_objects
+end 
 
     def self.get_locations 
         response = RestClient.get(GHIBLI + "locations")

@@ -37,6 +37,7 @@ EOF
 
     def show_characters
         puts "Here are your characters"
+        Character.all
     end 
 
     def show_movies 
