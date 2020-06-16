@@ -10,8 +10,23 @@ class API
         #puts response
     #end 
 
-    #def self.get_characters 
-        #response = RestClient.get(GHIBLI + "people")
-        #puts response
-    #end 
+    def self.get_characters 
+        response = RestClient.get(GHIBLI + "people")
+        data = JSON.parse(response)
+        data.each do |hash| 
+            hash.each do |key, value|
+            #binding.pry
+            if key == 'name'
+                puts value
+            end 
+            end 
+        end
+    end 
+
+    def self.get_locations 
+        response = RestClient.get(GHIBLI + "locations")
+        data = JSON.parse(response)
+        puts data.first
+    end 
+
 end 
