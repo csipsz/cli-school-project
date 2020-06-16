@@ -8,3 +8,5 @@ CLI.new.call
 #API.get_places
 #API.get_films
 
+#CLI.new.look_up_summary
+

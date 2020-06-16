@@ -54,10 +54,6 @@ EOF
         select_places 
     end 
 
-        #puts API.get_films
-        #Film.all.each do |film| 
-        #puts film.title 
-
     def finishing_program 
        puts "Thank you for checking out my gem, I hope you had some fun!"
     end 
@@ -73,6 +69,7 @@ EOF
                 puts "He/She appeared in: #{character.character_movie}"
             end 
         end 
+       continue_on
     end 
 
     def select_places 
@@ -87,6 +84,17 @@ EOF
     end 
 
 
+    def continue_on
+        puts "If you are interested in that movie, type in the title!"
+        current_movie = gets.chomp.split(" ").each{|word| word.downcase!}.join(" ")
+        API.get_films
+        Film.all.each do |film|
+            if film.title.split(" ").each{|word| word.downcase!}.join(" ") == current_movie
+                puts film.title
+                puts film.description 
+            end  
+        end 
+    end 
 
 end 
 
