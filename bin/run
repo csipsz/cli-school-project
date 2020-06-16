@@ -4,4 +4,3 @@ require_relative "../lib/environment"
 
 CLI.new.call
 
-API.get_characters
