@@ -1,5 +1,3 @@
-require 'pry'
-
 class CLI 
     def call 
         greet_user
@@ -109,11 +107,11 @@ EOF
                 puts " "
                 puts film.title.upcase.colorize(:light_cyan)
                 puts " "
-                puts "Director: " + film.director.colorize(:magenta)
-                puts "Producer: " + film.director.colorize(:magenta)
-                puts "Release date: " + film.release_date.colorize(:magenta)
+                puts "Director: " + film.director.colorize(:light_magenta)
+                puts "Producer: " + film.director.colorize(:light_magenta)
+                puts "Release date: " + film.release_date.colorize(:light_magenta)
                 puts " "
-                puts "DESCRIPTION: " + film.description
+                puts "DESCRIPTION: ".colorize(:cyan) + film.description
             end  
         end 
         puts ' '

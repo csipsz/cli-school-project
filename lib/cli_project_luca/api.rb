@@ -1,4 +1,3 @@
-require 'pry'
 class API 
 
     GHIBLI = "https://ghibliapi.herokuapp.com/"

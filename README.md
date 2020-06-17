@@ -22,7 +22,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This is a very small CLI database based on the Ghibli API. You can search for characters or imaginary places. 
+When you look up a character, you can also look up the movie that is related to it!
 
 ## Development
 
