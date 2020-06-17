@@ -85,7 +85,8 @@ EOF
         place_choice = gets.chomp.split(" ").each{|word| word.capitalize!}.join(" ")
         Place.all.each do |place| 
             if place.name == place_choice
-                puts "#{place.name} has a #{place.climate} climate with the terrain of a #{place.terrain}." 
+                puts "#{place.name} has a #{place.climate} climate with the terrain of a #{place.terrain}."
+                puts "It is shown in #{place.get_movie_from_url}. " 
                 puts "Unfortunately there is no more data about this place!"
             end 
         end 
@@ -102,10 +103,11 @@ EOF
                 puts film.description
             end  
         end 
-        puts "Type 'main' if you want to get back to main menu" 
+        puts ' '
+        puts "Type 'main' if you want to get back to main menu".colorize(:yellow) 
         user_input = gets.strip 
         if user_input == 'main'
-            print_menu 
+            print_menu
         else 
             puts "I am not sure what you would like to do. Can you please try again?"
         end 

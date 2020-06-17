@@ -13,4 +13,12 @@ class Place
         @@all
     end 
 
+    def get_movie_from_url
+        url = self.films[0]
+        response = RestClient.get(url)
+        char_movie = JSON.parse(response)
+        char_movie['title']
+    end 
+
+    
 end 
