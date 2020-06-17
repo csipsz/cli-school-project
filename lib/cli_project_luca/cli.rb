@@ -106,8 +106,14 @@ EOF
         current_movie = gets.chomp.split(" ").each{|word| word.downcase!}.join(" ")
         Film.all.each do |film|
             if film.title.split(" ").each{|word| word.downcase!}.join(" ") == current_movie
+                puts " "
                 puts film.title.upcase.colorize(:light_cyan)
-                puts film.description
+                puts " "
+                puts "Director: " + film.director.colorize(:magenta)
+                puts "Producer: " + film.director.colorize(:magenta)
+                puts "Release date: " + film.release_date.colorize(:magenta)
+                puts " "
+                puts "DESCRIPTION: " + film.description
             end  
         end 
         puts ' '

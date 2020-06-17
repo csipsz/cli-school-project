@@ -25,7 +25,10 @@ class API
         film_data.map do |hash| 
             title = hash['title']
             description = hash['description']
-            Film.new(title, description)
+            director = hash['director']
+            producer = hash['producer']
+            release_date = hash['release_date']
+            Film.new(title, description, director, producer,release_date)
         end 
         
     end 
