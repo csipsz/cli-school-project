@@ -8,21 +8,24 @@ class CLI
 
     def greet_user 
         puts <<-'EOF'
-         __      __       .__                                                              ._.
-        /  \    /  \ ____ |  |   ____  ____   _____   ____        __ __  ______ ___________| |
-        \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \      |  |  \/  ___// __ \_  __ \ |
-         \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/      |  |  /\___ \\  ___/|  | \/\|
-          \__/\  /  \___  >____/\___  >____/|__|_|  /\___  > /\  |____//____  >\___  >__|   __
-               \/       \/          \/            \/     \/  )/             \/     \/       \/
+        (`\ .-') /`   ('-.                                  _   .-')       ('-.  ,---. 
+        `.( OO ),' _(  OO)                                ( '.( OO )_   _(  OO) |   | 
+     ,--./  .--.  (,------.,--.       .-----.  .-'),-----. ,--.   ,--.)(,------.|   | 
+     |      |  |   |  .---'|  |.-')  '  .--./ ( OO'  .-.  '|   `.'   |  |  .---'|   | 
+     |  |   |  |,  |  |    |  | OO ) |  |('-. /   |  | |  ||         |  |  |    |   | 
+     |  |.'.|  |_)(|  '--. |  |`-' |/_) |OO  )\_) |  |\|  ||  |'.'|  | (|  '--. |  .' 
+     |         |   |  .--'(|  '---.'||  |`-'|   \ |  | |  ||  |   |  |  |  .--' `--'  
+     |   ,'.   |   |  `---.|      |(_'  '--'\    `'  '-'  '|  |   |  |  |  `---..--.  
+     '--'   '--'   `------'`------'   `-----'      `-----' `--'   `--'  `------''--'  
 EOF
     end 
 
     def print_menu 
         user_choice = nil 
+        puts "This is a small database about the Ghibli universe.".colorize(:cyan)
+        puts "Please type an option that interest you, or type 'exit' to exit!".colorize(:cyan)
         while user_choice != 'exit'
-            puts "This is a small database about the Ghibli universe."
-            puts "Please type an option that interest you, or type 'exit' to exit!"
-            puts "Type 1 to list characters or type 2 to list imaginary places!"
+            puts "Type 1 to list characters or type 2 to list imaginary places, or type exit!".colorize(:magenta)
             user_choice = gets.strip.downcase
             if user_choice.to_i == 1
                 show_characters
@@ -31,13 +34,13 @@ EOF
             elsif user_choice == 'exit'
                 finishing_program
             else 
-                puts "Invalid input, please try again or type 'exit' to exit the program!"
+                puts "Invalid input, please try again or type 'exit' to exit the program!".colorize(:red)
             end 
         end 
     end 
 
     def show_characters
-        puts "Here are your characters"
+        puts "Here are all of your characters".colorize(:light_magenta)
         API.get_characters
         Character.all.each_with_index do |character, index| 
             puts "#{index + 1} #{character.name}" 
@@ -46,7 +49,8 @@ EOF
     end 
 
     def show_places 
-        puts "Here are all of the locations!"
+        puts "Here are all of the locations!".colorize(:light_magenta)
+        API.get_characters
         API.get_places
         Place.all.each_with_index do |place, index| 
         puts "#{index + 1} #{place.name}" 
@@ -55,11 +59,11 @@ EOF
     end 
 
     def finishing_program 
-       puts "Thank you for checking out my gem, I hope you had some fun!"
+       puts "Thank you for checking out my gem, I hope you had some fun!".colorize(:cyan)
     end 
 
     def select_character 
-        puts 'Enter the name of the character that you would like to learn more about!'
+        puts 'Enter the name of the character that you would like to learn more about!'.colorize(:yellow)
         character_choice = gets.chomp.split(" ").each{|word| word.capitalize!}.join(" ")
         Character.all.each do |character| 
             if character.name == character_choice
@@ -73,8 +77,8 @@ EOF
     end 
 
     def select_places 
-        puts "Which place would you like to discover?"
-        puts "Type in the name that you are interested in!"
+        puts "Which place would you like to discover?".colorize(:yellow)
+        puts "Type in the name that you are interested in!".colorize(:yellow)
         place_choice = gets.chomp.split(" ").each{|word| word.capitalize!}.join(" ")
         Place.all.each do |place| 
             if place.name == place_choice
@@ -90,8 +94,8 @@ EOF
         API.get_films
         Film.all.each do |film|
             if film.title.split(" ").each{|word| word.downcase!}.join(" ") == current_movie
-                puts film.title
-                puts film.description 
+                puts "#{film.title}".colorize(:ligt_cyan)
+                puts film.description
             end  
         end 
     end 

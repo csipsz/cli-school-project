@@ -2,6 +2,7 @@
 require 'pry'
 require 'json'
 require 'rest-client'
+require 'colorize'
 
 require_relative './cli_project_luca/version'
 require_relative './cli_project_luca/cli'
